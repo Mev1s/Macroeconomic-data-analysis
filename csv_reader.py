@@ -5,9 +5,9 @@ import argparse
 from parser import parse_args
 
 
-def csv_reader(args: argparse.Namespace) -> List[Dict[str, str]]:
+def csv_reader(files: argparse.Namespace) -> List[Dict[str, str]]:
     data = []
-    for file in args.files:
+    for file in files:
         try:
             with open(file) as f:
                 reader = csv.DictReader(f)
