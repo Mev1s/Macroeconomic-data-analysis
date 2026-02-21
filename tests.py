@@ -1,5 +1,4 @@
 import sys
-from argparse import ArgumentParser
 
 import pytest
 
@@ -74,10 +73,10 @@ def test_negative_value_result_average_gdp(data):
             ["USA", 300.0]
          ])
 ])
-def test_correctly_values_average_gdp(data, expected):
+def test_correctly_values_average_gdp(data, expected): # проверка правильности расчета avg
     assert average_gdp(data) == expected
 
-def test_parser():
+def test_parser(): # проверка работы parser
     sys.argv = [
         "main.py",
         "--files",
@@ -91,6 +90,6 @@ def test_parser():
     assert args.files == ["file.csv"]
     assert args.report == "average-gdp"
 
-def test_output_report():
+def test_output_report(): # проверка вывода tabulate
     result = format_report([[1, "Mexico", 150.0]])
     assert "Mexico" in result

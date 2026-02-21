@@ -1,4 +1,3 @@
-from csv_reader import csv_reader
 from typing import Dict, List, Union
 
 def average_gdp_function(
