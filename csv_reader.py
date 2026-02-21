@@ -14,6 +14,5 @@ def csv_reader(files: argparse.Namespace) -> List[Dict[str, str]]:
                 for row in reader:
                     data.append(row)
         except FileNotFoundError:
-            print(f"{file} не найден")
-            return "file not found"
+            raise FileNotFoundError(f"{file} не найден")
     return data

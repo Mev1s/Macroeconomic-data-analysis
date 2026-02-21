@@ -1,15 +1,17 @@
 from csv_reader import csv_reader
-from typing import Dict, List
+from typing import Dict, List, Union
 
 def average_gdp_function(
         data: List[Dict[str, str]]
-                         ) -> List[list[int, str, float]]:
+                         ) -> List[List[str, float]]:
 
     countries_gdp = {}
     result_out = []
 
     for row in data:
-        if row['country'] not in countries_gdp:  # создаем словарь с парами страна - list(ВВП)
+        if int(row['gdp']) < 0:
+            raise ValueError(f"{row} ВВП не может быть отрицательным")
+        elif row['country'] not in countries_gdp:  # создаем словарь с парами страна - list(ВВП)
             countries_gdp[row['country']] = [int(row['gdp'])]
         else: # если уже есть, то в list этой страны добавляем значение
             countries_gdp[row['country']].append(int(row['gdp']))
@@ -20,7 +22,6 @@ def average_gdp_function(
         )
 
     result_out = sorted(result_out, key=lambda x: x[1], reverse=True)
-
     return result_out
 
 
