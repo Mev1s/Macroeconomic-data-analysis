@@ -1,9 +1,11 @@
 import csv
+from typing import List, Dict
+import argparse
 
 from parser import parse_args
 
 
-def csv_reader(args):
+def csv_reader(args: argparse.Namespace) -> List[Dict[str, str]]:
     data = []
     for file in args.files:
         try:

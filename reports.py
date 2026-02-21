@@ -1,16 +1,15 @@
 from csv_reader import csv_reader
+from typing import Dict, List
 
-def avarage_gdp_function():
+def average_gdp_function(data: List[Dict[str, str]]) -> Dict[str, list[str]]:
     countries_gdp = {}
-
 
     for row in data: # создаем словарь с парами страна - list(ВВП)
         if row['country'] not in countries_gdp:
-            countries_gdp[row['country']] = int(row['gdp'])
+            countries_gdp[row['country']] = [row['gdp']]
         else:
             countries_gdp[row['country']].append(row['gdp'])
-    print(countries_gdp)
+    return countries_gdp
 
 
-
-REPORTS = {"avarage-gdp": avarage_gdp_function}
+REPORTS = {"average-gdp": average_gdp_function} # введеный аргумент (--report) = нужная функция
