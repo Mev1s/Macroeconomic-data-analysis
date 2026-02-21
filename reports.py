@@ -14,10 +14,12 @@ def average_gdp_function(
         else: # если уже есть, то в list этой страны добавляем значение
             countries_gdp[row['country']].append(int(row['gdp']))
 
-    for ind, row in enumerate(countries_gdp.items()): # приводим
+    for ind, row in enumerate(countries_gdp.items()): # приводим сырые данные в нужный вид
         result_out.append(
             [ind+1, row[0], round(sum(row[1]) / len(row[1]), 2)]
         )
+
+    result_out = sorted(result_out, key=lambda x: x[2], reverse=True)
 
     return result_out
 
