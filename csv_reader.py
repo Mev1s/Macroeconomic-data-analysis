@@ -2,9 +2,8 @@ import csv
 
 from parser import parse_args
 
-args = parse_args()
 
-def csv_reader():
+def csv_reader(args):
     data = []
     for file in args.files:
         try:
@@ -15,5 +14,4 @@ def csv_reader():
         except FileNotFoundError:
             print(f"{file} не найден")
             return "file not found"
-    print(data)
     return data
